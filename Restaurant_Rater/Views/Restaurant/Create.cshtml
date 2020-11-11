@@ -1,0 +1,23 @@
+﻿
+@model Restaurant_Rater.Models.Restaurant
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Create</h2>
+@using (Html.BeginForm())
+{ 
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>Restaurant</h4>
+        <hr />
+        <div class="form-group">
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger"})
+            </div>
+        </div>
+    </div>
+}
