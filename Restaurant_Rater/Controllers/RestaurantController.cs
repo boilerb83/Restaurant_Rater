@@ -11,10 +11,7 @@ namespace Restaurant_Rater.Controllers
     {
         private RestaurantDbContext _db = new RestaurantDbContext();
         // GET: Restaurant
-        public ActionResult Index()
-        {
-            return View(_db.Restaurants.ToList());
-        }
+                public ActionResult Index() => View(_db.Restaurants.ToList());
         //GET:  Restaurant/Create
         public ActionResult Create()
         {
@@ -32,6 +29,21 @@ namespace Restaurant_Rater.Controllers
                 return RedirectToAction("Index");
             }
 
+            return View(restaurant);
+        }
+
+        //DELETE: Restaurant/Delete{id}
+        public ActionResult Delete(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(System.Net.HttpStatusCode.BadRequest);
+            }
+            Restaurant restaurant = _db.Restaurants.Find(id);
+            if (restaurant == null)
+            {
+                return HttpNotFound();
+            }
             return View(restaurant);
         }
     }

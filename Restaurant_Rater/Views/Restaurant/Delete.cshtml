@@ -1,0 +1,42 @@
+﻿
+@model Restaurant_Rater.Models.Restaurant
+
+@{
+    ViewBag.Title = "Delete";
+}
+<h2>Delete</h2>
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Restaurant</h4>
+
+    <hr />
+    <d1 class="d1-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+        <dt>
+            @Html.DisplayFor(model => model.Name)
+        </dt>
+        <dt>
+            @Html.DisplayNameFor(model => model.Address)
+        </dt>
+        <dt>
+            @Html.DisplayFor(model => model.Address)
+        </dt>
+        <dt>
+            @Html.DisplayNameFor(model => model.Rating)
+        </dt>
+        <dt>
+            @Html.DisplayFor(model => model.Rating)
+        </dt>
+    </d1>
+    @using (Html.BeginForm())
+    { 
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class=" = "btn btn-default" />
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>
